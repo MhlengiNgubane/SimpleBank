@@ -1,0 +1,5 @@
+createdb:
+	docker exec -it postgres12 createdb --username=bank --owner=bank simple_bank
+
+drdb:
+	docker exec -it postgres12 createdb --username=bank --owner=bank simple_bank
