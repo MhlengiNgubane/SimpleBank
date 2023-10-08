@@ -1,0 +1,18 @@
+package db
+
+import (
+	"database/sql"
+	"log"
+	"os"
+	"testing"
+
+	_ "github.com/lib/pq"
+)
+
+const (
+	dbDriver = "postgres"
+	dbSource = "postgresql://root:password@localhost:5432/simple_bank?sslmode=disable"
+)
+
+var testQueries *Queries
+

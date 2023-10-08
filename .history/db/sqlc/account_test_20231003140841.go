@@ -1,0 +1,10 @@
+package db
+
+import "testing"
+
+func TestCreateAccount(t *testing.T) {
+	arg := CreateAccountParams{
+		Owner: "Asanda",
+		Balance: ,
+	}
+}
