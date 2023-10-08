@@ -1,9 +1,0 @@
-
-post
-createdb:
-	docker exec -it postgres13 createdb --username=root --owner=root simple_bank
-
-dropdb:
-	docker exec -it postgres13 dropdb simple_bank
-
-.PHONY: createdb	

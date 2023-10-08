@@ -1,2 +1,0 @@
-createdb:
-	docker exec -it postgres12 createdb

@@ -1,7 +1,0 @@
-createdb:
-	docker exec -it postgres12 createdb --username=bank --owner=bank simple_bank
-
-dropdb:
-	docker exec -it postgres12 createdb --username=bank --owner=bank simple_bank
-
-.	
