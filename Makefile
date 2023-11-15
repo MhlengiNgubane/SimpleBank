@@ -21,10 +21,7 @@ mysql:
 
 createMySQLdb:
 	docker exec -it mysql8 mysql -uroot -ppassword root	
-
-dropMySQLdb:
-	docker exec -it mysql8 dropdb root	
-
+	
 sqlc:
 	sqlc generate
 
