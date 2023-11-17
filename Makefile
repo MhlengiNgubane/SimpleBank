@@ -27,11 +27,12 @@ mysql:
 
 createMySQLdb:
 	docker exec -it mysql8 mysql -uroot -ppassword root	
+
 sqlc:
 	sqlc generate
 
 test:
 	go test -v -cover ./...
 
-.PHONY: postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 mysql sqlc test opendb
+.PHONY: postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 mysql createMySQLdb sqlc test opendb
 
