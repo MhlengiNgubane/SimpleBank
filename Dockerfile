@@ -1,6 +1,7 @@
 # Build stage
-FROM golang:1.20-alpine3.18 AS builder
+FROM golang:1.21.5-alpine3.18 AS builder
 WORKDIR /app
+COPY go.mod .
 COPY . .
 RUN go build -o main main.go
 
@@ -10,5 +11,5 @@ WORKDIR /app
 COPY --from=builder /app/main .
 COPY app.env .
 
-EXPOSE 8080
+EXPOSE 8080 
 CMD [ "/app/main" ]
