@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out code
+    - name: Check Out Code 
       uses: actions/checkout@v3
 
     - name: Setup AWS ECR Details
