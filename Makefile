@@ -14,10 +14,10 @@ migrateup:
 	migrate -path db/migration -database "postgresql://root:3lzi0ELhj2HsHsjS8CHn@simple-bank.cva8i6oeqd90.af-south-1.rds.amazonaws.com:5432/simple_bank" -verbose up
 
 migrateup1:
-	migrate -path db/migration -database "postgresql://root:password@localhost:5432/simple_bank?sslmode=disable" -verbose up 1		
+	migrate -path db/migration -database "postgresql://root:3lzi0ELhj2HsHsjS8CHn@simple-bank.cva8i6oeqd90.af-south-1.rds.amazonaws.com:5432/simple_bank" -verbose up 1		
 
 migratedown:
-	migrate -path db/migration -database "postgresql://root:password@localhost:5432/simple_bank?sslmode=disable" -verbose down
+	migrate -path db/migration -database "postgresql://root:3lzi0ELhj2HsHsjS8CHn@simple-bank.cva8i6oeqd90.af-south-1.rds.amazonaws.com:5432/simple_bank" -verbose down
 
 migratedown1:
 	migrate -path db/migration -database "postgresql://root:3lzi0ELhj2HsHsjS8CHn@simple-bank.cva8i6oeqd90.af-south-1.rds.amazonaws.com:5432/simple_bank" -verbose down 1	
