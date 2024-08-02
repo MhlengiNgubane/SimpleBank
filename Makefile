@@ -11,7 +11,7 @@ dropdb:
 	docker exec -it postgres13 dropdb simple_bank
 
 migrateup:
-	migrate -path db/migration -database "postgresql://root:3lzi0ELhj2HsHsjS8CHn@simple-bank.cva8i6oeqd90.af-south-1.rds.amazonaws.com:5432/simple_bank" -verbose up
+	migrate -path db/migration -database "postgresql://root:password@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
 migrateup1:
 	migrate -path db/migration -database "postgresql://root:password@localhost:5432/simple_bank?sslmode=disable" -verbose up 1		
