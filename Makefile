@@ -26,13 +26,13 @@ db_docs:
 	dbdocs build doc/dbml
 
 db_schema:
-	dbml2sql --postgres -o doc/schema.sql doc/db.dbml	
+	dbml2sql --postgres -o doc/schema.sql doc/db.dbml
 
 mysql:
 	docker run --name mysql8 -p 3306:3306 -e MYSQL_DATABASE=root -e MYSQL_ROOT_PASSWORD=password -d mysql:latest
 
 createMySQLdb:
-	docker exec -it mysql8 mysql -uroot -ppassword root	
+	docker exec -it mysql8 mysql -uroot -ppassword root
 
 sqlc:
 	sqlc generate
