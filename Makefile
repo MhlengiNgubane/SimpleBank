@@ -11,7 +11,7 @@ dropdb:
 	docker exec -it postgres13 dropdb simple_bank
 
 migrateup:
-	migrate -path db/migration -database "postgresql://root:3lzi0ELhj2HsHsjS8CHn@simple-bank.cva8i6oeqd90.af-south-1.rds.amazonaws.com:5432/simple_bank" -verbose up
+	migrate -path db/migration -database "postgresql://root:password@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
 migrateup1:
 	migrate -path db/migration -database "postgresql://root:password@localhost:5432/simple_bank?sslmode=disable" -verbose up 1		
@@ -22,11 +22,17 @@ migratedown:
 migratedown1:
 	migrate -path db/migration -database "postgresql://root:password@localhost:5432/simple_bank?sslmode=disable" -verbose down 1	
 
-mysql:	
+db_docs:
+	dbdocs build doc/dbml
+
+db_schema:
+	dbml2sql --postgres -o doc/schema.sql doc/db.dbml
+
+mysql:
 	docker run --name mysql8 -p 3306:3306 -e MYSQL_DATABASE=root -e MYSQL_ROOT_PASSWORD=password -d mysql:latest
 
 createMySQLdb:
-	docker exec -it mysql8 mysql -uroot -ppassword root	
+	docker exec -it mysql8 mysql -uroot -ppassword root
 
 sqlc:
 	sqlc generate
@@ -40,5 +46,5 @@ server:
 mock:
 	mockgen -package mockdb -destination db/mock/store.go simplebank/db/sqlc Store
 
-.PHONY: postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 sqlc test opendb server mock
+.PHONY: postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 db_docs db_schema sqlc test opendb server mock
 
