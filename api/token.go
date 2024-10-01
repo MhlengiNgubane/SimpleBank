@@ -1,10 +1,10 @@
 package api
 
 import (
-	"database/sql"
-
+	"errors"
 	"fmt"
 	"net/http"
+	db "simplebank/db/sqlc"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -34,7 +34,7 @@ func (server *Server) renewAccessToken(ctx *gin.Context) {
 
 	session, err := server.store.GetSession(ctx, refreshPayload.ID)
 	if err != nil {
-		if err == sql.ErrNoRows {
+		if errors.Is(err, db.ErrRecordNotFound) {
 			ctx.JSON(http.StatusNotFound, errorResponse(err))
 			return
 		}
@@ -68,6 +68,7 @@ func (server *Server) renewAccessToken(ctx *gin.Context) {
 
 	accessToken, accessPayload, err := server.tokenMaker.CreateToken(
 		refreshPayload.Username,
+		refreshPayload.Role,
 		server.config.AccessTokenDuration,
 	)
 	if err != nil {
